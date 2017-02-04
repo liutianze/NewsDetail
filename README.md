@@ -1,5 +1,8 @@
 #Android仿今日头条详情页实现
 
+##源码地址：
+ [Android仿今日头条详情页实现 github源码地址](https://github.com/iceAnson/NewsDetail) 
+ 
 !["Screen Shot"](http://okttsxi3s.bkt.clouddn.com/xiaoguo.gif)
 
 最近项目有个需求，需要实现一个和今日头条新闻详情页一样的体验。上部分是webview来展示新闻内容，下半部分是listview来展示评论区，可无限加载更多。
@@ -56,9 +59,19 @@
 
 ## 遗留问题
 1、scrollview和listview的内部滚动速度是不一致的，scrollview是比较大的，在scrollview滚动到底部的时候，listview采用scrollview滚动速度的三分之一进行fling，体验下来感觉还是比较流畅的。但总感觉还是不够稳妥，优化思路是：接管scrollview和listview的滚动速度，手动控制两个控件的过渡过程；
+
 2、当listview即将到达顶部的时候，手动往下拖动，当到达边界的时候，需要让scrollview跟着以前scrollby，让用户感知是一起滑动的，当手指松开的时候，要让scrollview惯性滚动一会，这里的惯性也由于速度不一致的问题，造成一点点的那么不自然；优化思路和1一致；
 
 
+Done
+----------
+QQ:452825089
+
+mail:452825089@qq.com
+
+wechat:ice3897315
+
+blog:http://iceAnson.github.io
 
 
 
