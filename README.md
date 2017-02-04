@@ -1,29 +1,7 @@
-##  实现 布局： WebView +ListView ;
+#Android仿今日头条详情页实现
 
-1. 遇到问题： 
+最近项目有个需求，需要实现一个和今日头条新闻详情页一样的体验。上部分是webview来展示新闻内容，下半部分是listview来展示评论区，可无限加载更多。
+起初的实现思路是 将webview放置在listview头部，看似没有什么问题，实现之后发现，webview各种奇怪的问题：黑屏，图片闪烁白屏,渲染速度慢等等问题；
+将webview和listview独立放置遍没有问题；于是反编译了一下头条的实现：
 
- 在WebView里面滚动flip, 最大距离只会停留在WebView底部，需要是需要直接换到ListView 开始Flip；
- 
-### 遇到的问题；  
-1、不知道webview什么时候到底了, (Fixed )
-@Override
-protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-    int height = (int) Math.floor(this.getContentHeight() * this.getScale());  
-    int webViewHeight = this.getMeasuredHeight();  
-    if(this.getScrollY() + webViewHeight >= height){  
-       Log.i("THE END", "reached");
-    }
-    super.onScrollChanged(l, t, oldl, oldt);
-}
-2、要知道webview滑到底的速度和加速度，(后面可调，次要)
-
-3、ListView要怎么自动fling距离 （）
-listView.fling();
-
-4、WebView自动滚，平滑滚动；
-
-![Screen Shot](/image/Screenshot_20170120-161537.png)
-
-5. 页面边界滑动问题：
- 1. 在第二个页面滑动，手势不放开，需要能进入第一个页面；
-
+![Screen Shot](/image/toutiao1.png)
