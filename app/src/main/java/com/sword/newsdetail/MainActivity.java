@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private int mWebViewHeight;
     private int mScreenHeight ;
     private int mLastY;
+    // WEBVIEW高度:48692
     public void onBtnScroll(View view){
         try {
             //在webview区域
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         mWebView.loadUrl(url);
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
-            public void onPageFinished(WebView view, String url) {
+            public void onPageFinished(final WebView view, String url) {
                 super.onPageFinished(view, url);
                 int w = View.MeasureSpec.makeMeasureSpec(0,
                         View.MeasureSpec.UNSPECIFIED);
@@ -84,8 +85,13 @@ public class MainActivity extends AppCompatActivity {
                         View.MeasureSpec.UNSPECIFIED);
                 //重新测量
                 view.measure(w, h);
-                mWebViewHeight = view.getHeight();
-                Log.i(TAG, "WEBVIEW高度:" + view.getHeight());
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mWebViewHeight = view.getHeight();
+                        Log.i(TAG, "WEBVIEW高度:" + view.getHeight());
+                    }
+                },100);
             }
         });
     }
