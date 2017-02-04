@@ -243,6 +243,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
+
+            @Override
+            public void onMove(float distance) {
+                if(mListView!=null && mListScrollState==AbsListView.OnScrollListener.SCROLL_STATE_FLING){
+                    Log.d(TAG,"listView还在fling,重置它的位置");
+                    mListView.stopFling();
+                    mListView.setSelectionFromTop(0,0);
+                    mListView.setHandleTouchEvent(false);
+                    mListScrollState = AbsListView.OnScrollListener.SCROLL_STATE_IDLE;
+                }
+            }
         });
     }
 

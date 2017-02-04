@@ -9,7 +9,7 @@ import android.widget.ScrollView;
 
 public class DetailScrollView extends ScrollView {
 
-    private static final String TAG ="MyScrollView" ;
+    private static final String TAG ="DetailScrollView" ;
     private boolean isScrolledToTop = true;// 初始化的时候设置一下值
     private boolean isScrolledToBottom = false;
     private DetailListView mChildListView;
@@ -64,6 +64,7 @@ public class DetailScrollView extends ScrollView {
                 isScrolledToBottom = false;
             }
             notifyScrollChangedListeners();
+
         }
         //getSpeed();
         // 有时候写代码习惯了，为了兼容一些边界奇葩情况，上面的代码就会写成<=,>=的情况，结果就出bug了
@@ -132,7 +133,7 @@ public class DetailScrollView extends ScrollView {
                     float fCount = fMoveRawY - fLastRawY;
                     Log.d(TAG,"------->onTouchEvent ACTION_MOVE  滑动距离:"+fCount);
                     if(getMoveListener()!=null){
-                        //getMoveListener().onMove(fCount);
+                        getMoveListener().onMove(fCount);
                         isMoving = true;
                         fLastRawY = fMoveRawY;
                     }
@@ -216,7 +217,7 @@ public class DetailScrollView extends ScrollView {
     public interface onMoveListener{
         public void onDown();
         public void onUp(int velocityY);
-        //public void onMove(float distance);
+        public void onMove(float distance);
     }
     public onMoveListener getMoveListener() {
         return mMoveListener;

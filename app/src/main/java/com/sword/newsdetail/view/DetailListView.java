@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
 
 public class DetailListView extends ListView implements /*View.OnTouchListener,*/ AbsListView.OnScrollListener {
 
-    private static final String TAG = "MyListView";
+    private static final String TAG = "DetailListView";
     private int listViewTouchAction;
     private static final int MAXIMUM_LIST_ITEMS_VIEWABLE = 10000;
     private Scroller mScroller;
