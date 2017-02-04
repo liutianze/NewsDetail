@@ -242,6 +242,7 @@ public class MainActivity extends AppCompatActivity {
                         mScrollView.fling(velocityY);
                     }
                 }
+                handleListViewTouchEvent();
             }
 
             @Override

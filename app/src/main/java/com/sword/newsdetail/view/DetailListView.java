@@ -63,6 +63,7 @@ public class DetailListView extends ListView implements /*View.OnTouchListener,*
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         try{
+            //Log.d(TAG,"------->onTouchEvent MotionEvent:" + ev.getAction());
             if (mVelocityTracker == null) {
                 //检查速度测量器，如果为null，获得一个
                 mVelocityTracker = VelocityTracker.obtain();
@@ -107,6 +108,11 @@ public class DetailListView extends ListView implements /*View.OnTouchListener,*
                     }
                     //break;
                     return super.onTouchEvent(ev);//为了让按下效果可以消失
+                }
+                //为了让按下效果可以消失
+                case MotionEvent.ACTION_CANCEL: {
+                    Log.d(TAG,"------->onTouchEvent ACTION_CANCEL");
+                    return super.onTouchEvent(ev);
                 }
             }
 
